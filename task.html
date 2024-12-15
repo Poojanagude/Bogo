@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Expandable Boxes</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="bogo">
+        <h2>YAY! Its BOGO</h2>
+      </div>
+    </div>
+    <!-- Box 1 -->
+    <div class="box" id="box1">
+      <div class="radio-btn-container product-details">
+        <input
+          type="radio"
+          name="expand"
+          id="radio1"
+          onclick="toggleBox('box1')"
+        />
+        <p>1 Unit <span class="off">10% Off</span></p>
+        <p>$10.00 USD</p>
+      </div>
+      <span class="sp">Standard Price</span>
+      <span class="old-price">$99.99</span>
+      <div class="options">
+        <ol>
+          <li>
+            <div class="box-contents">
+              <select id="size3">
+                <option value="S">S</option>
+                <option value="S">Small</option>
+              </select>
+
+              <select id="color3">
+                <option value="Black">Black</option>
+              </select>
+            </div>
+          </li>
+          <li>
+            <div class="box-contents">
+              <select id="size3">
+                <option value="S">S</option>
+                <option value="S">Small</option>
+              </select>
+
+              <select id="color3">
+                <option value="Colour">Colour</option>
+                <option value="Red">Red</option>
+              </select>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="box" id="box2">
+      <div class="most-popular-tag">
+        <span>MOST POPULAR</span>
+      </div>
+      <div class="radio-btn-container product-details">
+        <input
+          type="radio"
+          name="expand"
+          id="radio2"
+          onclick="toggleBox('box2')"
+        />
+        <p>2 Unit <span class="off">20% Off</span></p>
+        <p>$18.00 USD</p>
+      </div>
+      <span class="sp">Standard Price</span>
+      <span class="old-price">$99.99</span>
+      <div class="options">
+        <ol>
+          <li>
+            <div class="box-contents">
+              <select id="size3">
+                <option value="S">S</option>
+                <option value="S">Small</option>
+              </select>
+
+              <select id="color3">
+                <option value="Black">Black</option>
+              </select>
+            </div>
+          </li>
+          <li>
+            <div class="box-contents">
+              <select id="size3">
+                <option value="S">S</option>
+                <option value="S">Small</option>
+              </select>
+
+              <select id="color3">
+                <option value="Colour">Colour</option>
+                <option value="Red">Red</option>
+              </select>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="box" id="box3">
+      <div class="radio-btn-container product-details">
+        <input
+          type="radio"
+          name="expand"
+          id="radio3"
+          onclick="toggleBox('box3')"
+        />
+        <p>3 Unit <span class="off">30% Off</span></p>
+        <p>$24.00 USD</p>
+      </div>
+      <span class="sp">Standard Price</span>
+      <span class="old-price">$99.99</span>
+      <div class="options">
+        <ol>
+          <li>
+            <div class="box-contents">
+              <select id="size3">
+                <option value="S">S</option>
+                <option value="S">Small</option>
+              </select>
+
+              <select id="color3">
+                <option value="Black">Black</option>
+              </select>
+            </div>
+          </li>
+          <li>
+            <div class="box-contents">
+              <select id="size3">
+                <option value="S">S</option>
+                <option value="S">Small</option>
+              </select>
+
+              <select id="color3">
+                <option value="Colour">Colour</option>
+                <option value="Red">Red</option>
+              </select>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="product-detailss">
+      <span style="color: #ff6b82">Free Delivery</span>
+      <span>Total:$18.00 USD</span>
+    </div>
+    <div class="add-cart">
+      <button>
+        + Add to Cart</button>
+    </div>
+
+    <script>
+      // Keep track of the last expanded box
+      let lastExpandedBox = null;
+
+      // Function to toggle box expansion
+      function toggleBox(boxId) {
+        const box = document.getElementById(boxId);
+
+        // If the box is already expanded, collapse it
+        if (box.classList.contains("expanded")) {
+          box.classList.remove("expanded");
+        } else {
+          // Collapse the last expanded box, if any
+          if (lastExpandedBox && lastExpandedBox !== box) {
+            lastExpandedBox.classList.remove("expanded");
+            document.getElementById(
+              lastExpandedBox.id.replace("box", "radio")
+            ).checked = false;
+          }
+          // Expand the clicked box
+          box.classList.add("expanded");
+          lastExpandedBox = box; // Update the last expanded box
+        }
+      }
+
+      // Function to change the background color of the box
+      function changeColor(boxId, color) {
+        const box = document.getElementById(boxId);
+        box.style.backgroundColor = color;
+      }
+
+      // Function to change the size of the box
+      function changeSize(boxId, size) {
+        const box = document.getElementById(boxId);
+        box.style.height = size;
+      }
+    </script>
+  </body>
+  <div class="footer">@ Power by Pumper</div>
+</html>
